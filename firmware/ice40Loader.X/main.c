@@ -27,22 +27,23 @@ int main(void)
     SYSTEMConfig(SYS_FREQ, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
 
 
-    // Explorer16 LEDs are on lower 8-bits of PORTA and to use all LEDs, JTAG port must be disabled.
+    // Explorer16 LEDs are on lower 8-bits of PORTA and to use all LEDs, JTAG
+    // port must be disabled.
     mJTAGPortEnable(DEBUG_JTAGPORT_OFF);
 
     // Make all lower 8-bits of PORTA as output. Turn them off before changing
     // direction so that we don't have unexpected flashes
     mPORTAClearBits(BIT_7 | BIT_6 | BIT_5 | BIT_5 | BIT_4 | \
-                                                     BIT_3 | BIT_2 | BIT_1 | BIT_0 );
+        BIT_3 | BIT_2 | BIT_1 | BIT_0 );
 
     mPORTASetPinsDigitalOut( BIT_7 | BIT_6 | BIT_5 | BIT_5 | BIT_4 | \
-                                                     BIT_3 | BIT_2 | BIT_1 | BIT_0 );
+        BIT_3 | BIT_2 | BIT_1 | BIT_0 );
 
     // Now blink all LEDs ON/OFF forever.
     while(1)
     {
         mPORTAToggleBits(BIT_7 | BIT_6 | BIT_5 | BIT_5 | BIT_4 | \
-                                                 BIT_3 | BIT_2 | BIT_1 | BIT_0 );
+            BIT_3 | BIT_2 | BIT_1 | BIT_0 );
 
         // Insert some delay
         i = 1024*1024;
