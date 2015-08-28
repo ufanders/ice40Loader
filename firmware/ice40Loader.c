@@ -10,14 +10,11 @@
 #define ice40_SPI_SS BIT_5
 #define ice40_SPI_SCK BIT_6
 
-#define ice40_SPI_CHANNEL SPI_CHANNEL1
+#define ice40_SPI_CHANNEL SPI_CHANNEL2
 
 int ice40Init(void);
 int ice40SendBitstream(char* bitstreamToSend, int len);
 int ice40IsConfigured(void);
-
-//the FPGA bitstream (compiled HDL), stored somewhere.
-const char bitstream[] = "123456789";
 
 int ice40Init(void)
 {
@@ -31,6 +28,10 @@ int ice40Init(void)
 
     //configure SPI master port.
     SpiChnOpen(ice40_SPI_CHANNEL, (SPI_OPEN_MSTEN | SPI_OPEN_CKP_HIGH), 1);
+
+    ////PPS
+    //RPB5R = 0b0011; //RB5 as SDO1
+    //SDI1R = 0b0100; //RB8 as SDI1
 
     return 0;
 }

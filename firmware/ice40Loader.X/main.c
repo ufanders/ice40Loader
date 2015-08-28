@@ -2,6 +2,7 @@
  * Platform: 	Explorer-16 with PIC32MX PIM
  ********************************************************************/
 #include <plib.h>
+#include "../digital_top_bitmap.bin.h"
 
 // Configuration Bit settings
 // SYSCLK = 80 MHz (8MHz Crystal/ FPLLIDIV * FPLLMUL / FPLLODIV)
@@ -40,7 +41,7 @@ int main(void)
         BIT_3 | BIT_2 | BIT_1 | BIT_0 );
 
     // Now blink all LEDs ON/OFF forever.
-    while(1)
+    while(0)
     {
         mPORTAToggleBits(BIT_7 | BIT_6 | BIT_5 | BIT_5 | BIT_4 | \
             BIT_3 | BIT_2 | BIT_1 | BIT_0 );
@@ -48,6 +49,17 @@ int main(void)
         // Insert some delay
         i = 1024*1024;
         while(i--);
+    }
+
+    ice40Init();
+    ice40Configure(digital_top_bitmap_bin, sizeof(digital_top_bitmap_bin));
+    if(ice40IsConfigured())
+    {
+        mPORTAClearBits(BIT_7);
+    }
+    else
+    {
+        mPORTASetBits(BIT_7);
     }
 }
 

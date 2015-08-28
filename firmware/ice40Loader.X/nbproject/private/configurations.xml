@@ -3,7 +3,7 @@
   <projectmakefile>Makefile</projectmakefile>
   <defaultConf>0</defaultConf>
   <confs>
-    <conf name="default" type="2">
+    <conf name="PIC32MX460512L" type="2">
       <platformToolSN></platformToolSN>
       <languageToolchainDir>/Applications/microchip/xc32/v1.31/bin</languageToolchainDir>
       <mdbdebugger version="1">

@@ -4,10 +4,10 @@
 # NOCDDL
 #
 CND_BASEDIR=`pwd`
-# default configuration
-CND_ARTIFACT_DIR_default=dist/default/production
-CND_ARTIFACT_NAME_default=ice40Loader.X.production.hex
-CND_ARTIFACT_PATH_default=dist/default/production/ice40Loader.X.production.hex
-CND_PACKAGE_DIR_default=${CND_DISTDIR}/default/package
-CND_PACKAGE_NAME_default=ice40loader.x.tar
-CND_PACKAGE_PATH_default=${CND_DISTDIR}/default/package/ice40loader.x.tar
+# PIC32MX460512L configuration
+CND_ARTIFACT_DIR_PIC32MX460512L=dist/PIC32MX460512L/production
+CND_ARTIFACT_NAME_PIC32MX460512L=ice40Loader.X.production.hex
+CND_ARTIFACT_PATH_PIC32MX460512L=dist/PIC32MX460512L/production/ice40Loader.X.production.hex
+CND_PACKAGE_DIR_PIC32MX460512L=${CND_DISTDIR}/PIC32MX460512L/package
+CND_PACKAGE_NAME_PIC32MX460512L=ice40loader.x.tar
+CND_PACKAGE_PATH_PIC32MX460512L=${CND_DISTDIR}/PIC32MX460512L/package/ice40loader.x.tar
