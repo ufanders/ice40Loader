@@ -2,7 +2,7 @@
  * Platform: 	Explorer-16 with PIC32MX PIM
  ********************************************************************/
 #include <plib.h>
-#include "../digital_top_bitmap.bin.h"
+#include "../top_bitmap.bin.h"
 
 // Configuration Bit settings
 // SYSCLK = 80 MHz (8MHz Crystal/ FPLLIDIV * FPLLMUL / FPLLODIV)
@@ -27,10 +27,11 @@ int main(void)
     // The PBDIV value is already set via the pragma FPBDIV option above..
     SYSTEMConfig(SYS_FREQ, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
 
-
     // Explorer16 LEDs are on lower 8-bits of PORTA and to use all LEDs, JTAG
     // port must be disabled.
     mJTAGPortEnable(DEBUG_JTAGPORT_OFF);
+    
+    AD1PCFG = 0xFFFFFFFF; //all analog pins as digital
 
     // Make all lower 8-bits of PORTA as output. Turn them off before changing
     // direction so that we don't have unexpected flashes
@@ -52,7 +53,7 @@ int main(void)
     }
 
     ice40Init();
-    ice40Configure(digital_top_bitmap_bin, sizeof(digital_top_bitmap_bin));
+    ice40Configure(top_bitmap_bin, sizeof(top_bitmap_bin));
     if(ice40IsConfigured())
     {
         mPORTAClearBits(BIT_7);
@@ -63,3 +64,7 @@ int main(void)
     }
 }
 
+void _general_exception_handler (unsigned cause, unsigned status)
+{
+    while(1);
+}
