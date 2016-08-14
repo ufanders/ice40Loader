@@ -1,20 +1,11 @@
 /*********************************************************************
  * Platform: 	Explorer-16 with PIC32MX PIM
  ********************************************************************/
+#define SET_CONFIG_FUSES
+#include "../HardwareProfile.h"
+
 #include <plib.h>
 #include "../top_bitmap.bin.h"
-
-// Configuration Bit settings
-// SYSCLK = 80 MHz (8MHz Crystal/ FPLLIDIV * FPLLMUL / FPLLODIV)
-// PBCLK = 40 MHz
-// Primary Osc w/PLL (XT+,HS+,EC+PLL)
-// WDT OFF
-// Other options are don't care
-//
-#pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
-#pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_8
-
-#define SYS_FREQ (80000000L)
 
 int main(void)
 {
@@ -25,13 +16,13 @@ int main(void)
     // Given the options, this function will change the flash wait states, RAM
     // wait state and enable prefetch cache but will not change the PBDIV.
     // The PBDIV value is already set via the pragma FPBDIV option above..
-    SYSTEMConfig(SYS_FREQ, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
+    SYSTEMConfig(GetSystemClock(), SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
 
     // Explorer16 LEDs are on lower 8-bits of PORTA and to use all LEDs, JTAG
     // port must be disabled.
     mJTAGPortEnable(DEBUG_JTAGPORT_OFF);
     
-    AD1PCFG = 0xFFFFFFFF; //all analog pins as digital
+    DISABLE_ALL_ANALOG_PINS;
 
     // Make all lower 8-bits of PORTA as output. Turn them off before changing
     // direction so that we don't have unexpected flashes
