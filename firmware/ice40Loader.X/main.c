@@ -23,7 +23,8 @@ int main(void)
     mJTAGPortEnable(DEBUG_JTAGPORT_OFF);
     
     DISABLE_ALL_ANALOG_PINS;
-
+    
+/*
     // Make all lower 8-bits of PORTA as output. Turn them off before changing
     // direction so that we don't have unexpected flashes
     mPORTAClearBits(BIT_7 | BIT_6 | BIT_5 | BIT_5 | BIT_4 | \
@@ -42,7 +43,8 @@ int main(void)
         i = 1024*1024;
         while(i--);
     }
-
+*/
+    
     ice40Init();
     ice40Configure(top_bitmap_bin, sizeof(top_bitmap_bin));
     if(ice40IsConfigured())

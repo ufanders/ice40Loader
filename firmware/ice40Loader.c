@@ -11,6 +11,11 @@ int softSpi(unsigned int c, unsigned char bits);
 int ice40Init(void)
 {
     //configure GPIO for SPI and ice40 control signals.
+    ICE40_SPI_SCK_ODC = 1;
+    //ICE40_SPI_MOSI_ODC = 1;
+    //ICE40_SPI_CS_ODC = 1;
+    ICE40_CRESET_ODC = 1;
+    
     ICE40_SPI_SCK_TRIS = 0;
     ICE40_SPI_MISO_TRIS = 0;
     ICE40_SPI_MOSI_TRIS = 0;
@@ -52,6 +57,12 @@ int ice40Configure(char* bitstreamToSend, int len)
     char* c = bitstreamToSend;
     while(len--)
     {
+        /*
+        if(len == 1)
+        {
+            len = 1;
+        }
+         */
         //SPI1BUF = *(c++);
         softSpi(*(c++), 8);
     }
@@ -60,8 +71,8 @@ int ice40Configure(char* bitstreamToSend, int len)
     if(ICE40_CDONE_PORT)
     {
         //send at least 49 dummy bits to init FPGA I/O.
-        *c = 7;
-        while(*c--)
+        i = 7;
+        while(i--)
         {
             softSpi(0xFF, 8);
         }

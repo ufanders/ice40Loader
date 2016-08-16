@@ -27,7 +27,7 @@ extern "C" {
     #pragma config OSCIOFNC = OFF           // CLKO Enable
     #pragma config POSCMOD  = HS            // Primary Oscillator
     #pragma config IESO     = OFF           // Internal/External Switch-over
-    #pragma config FSOSCEN  = ON           // Secondary Oscillator Enable
+    #pragma config FSOSCEN  = OFF           // Secondary Oscillator Enable
     #pragma config FNOSC    = PRIPLL        // Oscillator Selection
 
     #ifdef __DEBUG
@@ -68,24 +68,21 @@ extern "C" {
 
 #define ice40_SPI_CHANNEL SPI_CHANNEL1
 
-#define ICE40_SPI_SCK_TRIS TRISBbits.TRISB14 // on riser card
-#define ICE40_SPI_SCK_LAT LATBbits.LATB14 // on riser card
-#define ICE40_SPI_MISO_TRIS TRISBbits.TRISB1 // on riser card
-#define ICE40_SPI_MOSI_TRIS TRISBbits.TRISB5 // on riser card
-#define ICE40_SPI_MOSI_LAT LATBbits.LATB5 // on riser card
-#define ICE40_SPI_CS_TRIS TRISBbits.TRISB4 // on riser card
-#define ICE40_SPI_CS_LAT LATBbits.LATB4 // on riser card
-#define ICE40_CRESET_TRIS TRISAbits.TRISA0 // on riser card
-#define ICE40_CRESET_LAT LATAbits.LATA0 // on riser card
+#define ICE40_SPI_SCK_TRIS TRISBbits.TRISB14 // RC2 on riser card (MUST REMOVE U6, U7, R50, R51, R52)
+#define ICE40_SPI_SCK_LAT LATBbits.LATB14 // RC2 on riser card (MUST REMOVE U6, U7, R50, R51, R52)
+#define ICE40_SPI_SCK_ODC ODCBbits.ODCB14 // RC2 on riser card (MUST REMOVE U6, U7, R50, R51, R52)
+#define ICE40_SPI_MISO_TRIS TRISBbits.TRISB1 //RE1 on riser card
+#define ICE40_SPI_MOSI_TRIS TRISBbits.TRISB5 //RG14 on riser card
+#define ICE40_SPI_MOSI_LAT LATBbits.LATB5 //RG14 on riser card
+#define ICE40_SPI_MOSI_ODC ODCBbits.ODCB5 //RG14 on riser card
+#define ICE40_SPI_CS_TRIS TRISBbits.TRISB4 //RD0 on riser card (SHARED WITH SOSCI MUST DISABLE SOSCEN)
+#define ICE40_SPI_CS_LAT LATBbits.LATB4 //RD0 on riser card (SHARED WITH SOSCI MUST DISABLE SOSCEN)
+#define ICE40_SPI_CS_ODC ODCBbits.ODCB4 //RD0 on riser card (SHARED WITH SOSCI MUST DISABLE SOSCEN)
+#define ICE40_CRESET_TRIS TRISAbits.TRISA0 //RE7 on riser card
+#define ICE40_CRESET_LAT LATAbits.LATA0 //RE7 on riser card
+#define ICE40_CRESET_ODC ODCAbits.ODCA0 //RE7 on riser card
 #define ICE40_CDONE_TRIS TRISAbits.TRISA1 // on riser card
 #define ICE40_CDONE_PORT PORTAbits.RA1 // on riser card
-    
-/*
- * B1 - SDI1
- B4 - SS1
- * B5 - SDO1
- * B14 - SCK1
- */
 
 /*
 #define ice40_SPI_CHANNEL SPI_CHANNEL2
