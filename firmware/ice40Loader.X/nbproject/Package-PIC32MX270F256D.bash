@@ -6,7 +6,7 @@
 
 # Macros
 TOP=`pwd`
-CND_CONF=PIC32MX460512L
+CND_CONF=PIC32MX270F256D
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
