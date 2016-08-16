@@ -1,3 +1,3 @@
-firmware/ice40Loader.X/build/
-firmware/ice40Loader.X/debug/
-/firmware/ice40Loader.X/dist/PIC32MX270F256D/
+build/
+debug/
+dist/
