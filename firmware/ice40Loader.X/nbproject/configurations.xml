@@ -5,10 +5,10 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>/Applications/microchip/xc32/v1.31/pic32mx/include/peripheral/spi_3xx_4xx.h</itemPath>
-      <itemPath>../top_bitmap.bin.h</itemPath>
       <itemPath>../HardwareProfile.h</itemPath>
       <itemPath>../HWP_PIC32MX270F256D_EX16.h</itemPath>
       <itemPath>../HWP_PIC32MX460F512L_EX16.h</itemPath>
+      <itemPath>../top_bitmap.bin.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -29,6 +29,7 @@
   <sourceRootList>
     <Elem>/Applications/microchip/xc32/v1.31/pic32mx/include/peripheral</Elem>
     <Elem>..</Elem>
+    <Elem>../../../../Erogear/GitHub/fos_fpga_pro_control/mbi5153/source/4/bitmap</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
